@@ -14,7 +14,7 @@
   color: #fff;
   overflow-x: hidden;
 
-  background-image: url("IMG_8767.jpg"); /* 背景图 */
+  background-image: url("IMG_8767.jpg"); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -104,7 +104,7 @@ body > * {
       color: #a38a8a;
     }
 
-    /* 滚动条优化 */
+    
     ::-webkit-scrollbar {
       height: 8px;
     }
@@ -122,7 +122,7 @@ body > * {
 .navbar button {
   padding: 10px 20px;
   border: none;
-  background-color: rgba(86, 81, 75, 0.7); /* 设置背景透明 */
+  background-color: rgba(86, 81, 75, 0.7); 
   color: white;
   border-radius: 20px;
   font-size: 1em;
@@ -146,7 +146,7 @@ video {
   border-radius: 20px;
   width: 100%;
   max-width: 250px;
-  min-width: 150px; /* 设置最小宽度，防止消失 */
+  min-width: 150px; 
   aspect-ratio: 1;
   object-fit: cover;
   overflow: hidden;
@@ -154,8 +154,8 @@ video {
 
 @media (max-width: 768px) {
   video {
-    max-width: 200px; /* 小屏幕时缩小视频 */
-    min-width: 150px; /* 保证视频不会消失 */
+    max-width: 200px; 
+    min-width: 150px; 
   }
 }
 </style>
@@ -183,18 +183,20 @@ video {
 
   <div class="slider">
 
-   <img src="photo\20250220_120400823_iOS.jpg" alt="回忆1">
-    <img src="photo\20250216_151823990_iOS.jpg" alt="回忆2">
+   <img src="image\4.jpg" alt="回忆1">
+    <img src="image\8.jpg" alt="回忆2">
     <video controls autoplay loop muted style="border-radius: 15px; width: 100%; max-width: 250px;">
       <source src="0304.mp4"type="video/mp4">
     </video>
-    <img src="photo\20250228_080908709_iOS.jpg" alt="回忆3">
-    <img src="photo\20250303_110835951_iOS.jpg" alt="回忆4">
-    <img src="photo\20250120_140406641_iOS.jpg" alt="回忆5">
+    <img src="image\13.jpg" alt="回忆3">
+    <img src="image\14" alt="回忆4">
+    <img src="photo\20250303_110835951_iOS.jpg" alt="回忆5">
     <img src="photo\20250207_064739024_iOS.jpg" alt="回忆6">
     <img src="photo\20250226_105907820_iOS.jpg" alt="回忆7">
     <img src="20250303_111532765_iOS.jpg" alt="回忆8">
     <img src="20250329_074601979_iOS.jpg" alt="回忆9">
+    <img src="image\1.jpg" alt="回忆10">
+    <img src="image\3.jpg" alt="回忆11">
   </div>
 
   <!-- 编号输入跳转 -->
@@ -219,12 +221,35 @@ video {
       }
     }
 
-    // 我们在一起第几天
+   
     const startDate = new Date("2025/2/27"); 
     const now = new Date();
     const diffDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
     document.getElementById("daysTogether").innerText = diffDays;
   </script>
+
+  <footer class="footer1">
+  © 2025 制作人：Yawen Zhu — 这是我第一次做网站，花了很长时间摸索，每一个小效果都研究了很久，虽然还是简陋，但希望你喜欢它。
+</footer>
+
+<style>
+  .footer1 {
+    position: static;
+    width: 100%;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 0.9em;
+    margin: 0;
+    box-shadow: 0 -1px 9px rgba(0,0,0,0.05);
+    text-align: center;
+    user-select: none;
+  
+  }
+  
+ 
+
+</style>
+
 
 </body>
 </html>
