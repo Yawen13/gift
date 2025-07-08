@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>礼物编号 1626 - 计划本</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+        margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-image: url('image/1636.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  color: #8b3d4f;
+  min-height: 100vh;
+  box-sizing: border-box;
+    }
+
+    .notebook {
+      width: 300px;
+      height: 200px;
+      background: #bcbcbc;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transform-style: preserve-3d;
+      transition: transform 1s ease;
+      cursor: pointer;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .notebook.open {
+      transform: rotateY(180deg);
+    }
+
+    .notebook-cover {
+      background: #928a88;
+      color: white;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2em;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    .notebook-inner {
+      background: #fffaf0;
+      width: 100%;
+      height: 250px;
+      padding: 15px;
+      backface-visibility: hidden;
+      transform: rotateY(180deg);
+      border-radius: 8px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      font-size: 0.95em;
+      color: #787676;
+      line-height: 1.6;
+    }
+
+    .notebook-inner h2 {
+      margin-bottom: 10px;
+      color: #2a9d8f;
+    }
+
+    .notebook-inner p {
+      margin-bottom: 5px;
+    }
+
+    .signature {
+      margin-top: 15px;
+      text-align: right;
+      font-style: italic;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<div class="notebook" onclick="toggleNotebook()">
+  <div class="notebook-cover">
+     计划本 · 编号1626
+  </div>
+  <div class="notebook-inner">
+    <h2>奔着标杆直跑 ！！</h2>
+    <p>愿你每天有计划，每天都前进一点。</p>
+    <p>把梦想写进生活，把目标写进今天。</p>
+    <p>你不是一个人在努力，我一直都在你身边为你加油！</p>
+    <div class="signature">—— 你的男朋友</div>
+  </div>
+</div>
+
+<script>
+  function toggleNotebook() {
+    document.querySelector('.notebook').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

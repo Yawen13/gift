@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>生日快乐首页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+  body {
+  position: relative;
+  margin: 0;
+  padding: 20px;
+  font-family: 'Quicksand', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+
+  background-image: url("photo/IMG_8767.jpg"); /* 背景图 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(29, 28, 28, 0.4);
+  z-index: 0;
+  pointer-events: none;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #f6e79e;
+    }
+
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 15px;
+      padding: 20px 10px;
+    }
+
+    .slider img {
+      width: 220px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px;
+      scroll-snap-align: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .slider img:hover {
+      transform: scale(1.05);
+    }
+
+    .input-area {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .input-area input {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-size: 1.2em;
+      width: 150px;
+      text-align: center;
+    }
+
+    .input-area button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background: #2a9d8f;
+      border: none;
+      color: white;
+      border-radius: 20px;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+
+    .input-area button:hover {
+      background: #21867a;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-style: italic;
+      color: #a38a8a;
+    }
+
+    /* 滚动条优化 */
+    ::-webkit-scrollbar {
+      height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #999;
+      border-radius: 4px;
+    }
+    .navbar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.navbar button {
+  padding: 10px 20px;
+  border: none;
+  background-color: rgba(86, 81, 75, 0.7); /* 设置背景透明 */
+  color: white;
+  border-radius: 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.navbar button:hover {
+  background-color: #e29e5c;
+}
+
+.section {
+  text-align: center;
+  font-size: 1.3em;
+  padding: 20px;
+  
+  border-radius: 20px;
+}
+  
+video {
+  border-radius: 20px;
+  width: 100%;
+  max-width: 250px;
+  min-width: 150px; /* 设置最小宽度，防止消失 */
+  aspect-ratio: 1;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  video {
+    max-width: 200px; /* 小屏幕时缩小视频 */
+    min-width: 150px; /* 保证视频不会消失 */
+  }
+}
+</style>
+
+  
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <button onclick="showSection('home')">首页</button>
+    <button onclick="window.location.href='memory.html'">我想对你说</button>
+    <button onclick="window.location.href='inmyeyes.html'">我眼中的崔秀玄</button>
+  </div>
+  
+  <!-- 内容区域 -->
+  <div id="home" class="section">给你做的一个小网站啦！</div>
+  <div id="memories" class="section" style="display:none;">这里是我们的回忆墙！</div>
+  <div id="gift" class="section" style="display:none;"> 在我眼中......</div>
+  
+  
+  
+  <h1>🎂 Happy Birthday <br>秀玄宝宝18岁啦!!!</h1>
+  <p style="text-align:center">这里是给你准备的一些小礼物哦，准备好了吗？</p>
+
+
+  <div class="slider">
+
+   <img src="photo\20250220_120400823_iOS.jpg" alt="回忆1">
+    <img src="photo\20250216_151823990_iOS.jpg" alt="回忆2">
+    <video controls autoplay loop muted style="border-radius: 15px; width: 100%; max-width: 250px;">
+      <source src="photo\20250303_111126000_iOS.MOV" type="video/mp4">
+    </video>
+    <img src="photo\20250228_080908709_iOS.jpg" alt="回忆3">
+    <img src="photo\20250303_110835951_iOS.jpg" alt="回忆4">
+    <img src="photo\20250120_140406641_iOS.jpg" alt="回忆5">
+    <img src="photo\20250207_064739024_iOS.jpg" alt="回忆6">
+    <img src="photo\20250226_105907820_iOS.jpg" alt="回忆7">
+    <img src="photo\20250303_111532765_iOS.jpg" alt="回忆8">
+    <img src="photo\20250329_074601979_iOS.jpg" alt="回忆9">
+  </div>
+
+  <!-- 编号输入跳转 -->
+  <div class="input-area">
+    <input type="text" id="giftInput" placeholder="礼物编号如1111">
+    <button onclick="goToGift()">打开礼物</button>
+  </div>
+
+  <!-- 可选功能区 -->
+  <div class="footer">
+    今天是我们在一起的第 <span id="daysTogether">...</span> 天 💖
+  </div>
+
+  <!-- 脚本 -->
+  <script>
+    function goToGift() {
+      const num = document.getElementById('giftInput').value.trim();
+      if (num) {
+        window.location.href = `${num}.html`;
+      } else {
+        alert("请输入编号~");
+      }
+    }
+
+    // 我们在一起第几天
+    const startDate = new Date("2025-2-27"); 
+    const now = new Date();
+    const diffDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+    document.getElementById("daysTogether").innerText = diffDays;
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>在我眼中的你</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url("image/inmyeyes.jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      color: #fff;
+    }
+    body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* 黑色遮罩，透明度0.3 */
+  z-index: 0;
+  pointer-events: none; /* 不阻止点击 */
+
+}
+ 
+
+    h1 {
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff0f0;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px 70px;
+      width: 90%;
+      max-width: 1000px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 18px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      font-size: 1.1em;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(255, 192, 203, 0.4);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 2.5em;
+      color: #ff7f9c;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      transition: transform 0.5s, opacity 0.5s;
+      pointer-events: none;
+    }
+
+    .card.clicked .heart {
+      animation: pop 0.6s ease forwards;
+    }
+
+    @keyframes pop {
+      0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      50%  { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.3em;
+      color: #f7eea4;
+    }
+
+    .card p {
+      margin: 12px 0 0;
+      font-size: 0.9em;
+      color: #fafdff;
+    }
+
+    .special-card {
+      background: linear-gradient(135deg, rgba(255, 239, 239, 0.5), rgba(255, 255, 255, 0.3));
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      font-style: italic;
+      font-size: 1em;
+      line-height: 1.6;
+      color: #fff0f5;
+    }
+
+    @media (max-width: 500px) {
+      .card-container {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>在我眼中的你</h1>
+  <div class="card-container">
+    <div class="card" onclick="showHeart(this)"><h3>善解人意</h3><p>总是默默细心地照顾别人</p><span class="heart">❤️</span></div>
+    <div class="card" onclick="showHeart(this)"><h3>你的笑容</h3><p>宝宝笑起来和太阳一样温暖</p><span class="heart">❤️</span></div>
+    <div class="card" onclick="showHeart(this)"><h3>想法</h3><p>思考事情比别人成熟很多，不随波逐流</p><span class="heart">❤️</span></div>
+    <div class="card" onclick="showHeart(this)"><h3>坚持</h3><p>你有自己的原则，也有不服输的倔强</p><span class="heart">❤️</span></div>
+    <div class="card" onclick="showHeart(this)"><h3>努力</h3><p>总是在悄悄努力，追逐自己的目标</p><span class="heart">❤️</span></div>
+    <div class="card" onclick="showHeart(this)"><h3>幽默感</h3><p>你的小幽默总能让我开心大笑</p><span class="heart">❤️</span></div>
+    <div class="card" onclick="showHeart(this)"><h3>小情绪</h3><p>偶尔的小情绪也特别可爱</p><span class="heart">❤️</span></div>
+    <div class="card special-card" onclick="showHeart(this)">你是个<br>很值得被爱的女孩<span class="heart">❤️</span></div>
+    <div class="card special-card" onclick="showHeart(this)">你让我想成为<br>更好的人<span class="heart">❤️</span></div>
+    <div class="card special-card" onclick="showHeart(this)">谢谢你<br>出现在我的生命里<span class="heart">❤️</span></div>
+  </div>
+
+  <script>
+    function showHeart(card) {
+      card.classList.add('clicked');
+      setTimeout(() => {
+        card.classList.remove('clicked');
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

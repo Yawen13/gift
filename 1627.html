@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>礼物编号 1627 - 电动牙刷</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to top right, #fff7f0, #e0f7fa);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 25px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      color: #00796b;
+      margin-bottom: 15px;
+    }
+
+    .message {
+      font-size: 1.15em;
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    .memory {
+      text-align: left;
+      background: #f1f8e9;
+      padding: 20px;
+      border-radius: 15px;
+      color: #5d4037;
+      line-height: 1.6;
+      font-size: 1em;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      background: #00796b;
+      color: white;
+      padding: 10px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #004d40;
+    }
+
+    .bubble {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(173, 216, 230, 0.5);
+      border-radius: 50%;
+      animation: float 8s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.6);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-20vh) scale(1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>礼物编号 1627</h1>
+    <div class="message">这是一把电动牙刷啦！宝宝好好刷牙</div>
+   
+
+    <div class="memory">
+      <strong>小嘀咕 :</strong><br>
+      宝宝经常刷牙，拿着电动牙刷，应该可以方便一点吧？希望你喜欢这个小礼物哦！记得每天都要好好刷牙，保持口腔健康哦！<br>
+      宝宝的笑容超级好看哦
+    </div>
+
+    <button class="back-button" onclick="window.location.href='gift.html'">← 返回首页</button>
+  </div>
+
+  <!-- JS 生成浮动泡沫 -->
+  <script>
+    function createBubble() {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      bubble.style.left = Math.random() * 100 + 'vw';
+      bubble.style.animationDuration = (6 + Math.random() * 5) + 's';
+      document.body.appendChild(bubble);
+      setTimeout(() => bubble.remove(), 10000);
+    }
+
+    setInterval(createBubble, 800);
+  </script>
+
+</body>
+</html>
