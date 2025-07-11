@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>在我眼中的你</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -32,7 +34,40 @@
   pointer-events: none; /* 不阻止点击 */
 
 }
- 
+ .nav {
+        text-align: center;
+     padding-top: 20px;
+      position: relative;
+        z-index: 2;
+    text-align: center;
+    }
+
+   .nav a {
+    margin-top:  20px;
+    border-radius: 20px;
+    margin: 0 15px;
+    color: white;          
+  text-decoration: none;   
+  
+  font-size: 1rem;
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+    .nav a:hover {
+      text-decoration: underline;
+    }
+
+    .nav span {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .nav span:hover {
+      text-decoration: underline;
+    }
+
 
     h1 {
       font-size: 2.5em;
@@ -125,6 +160,15 @@
   </style>
 </head>
 <body>
+  <body>
+  <div class="nav">
+    <a href="gift.html">主页</a>
+
+  <a href="inmyeyes.html">我眼中的秀玄</a>
+  <a href="memory.html">想对你说</a> 
+  </div>
+
+  
   <h1>在我眼中的你</h1>
   <div class="card-container">
     <div class="card" onclick="showHeart(this)"><h3>善解人意</h3><p>总是默默细心地照顾别人</p><span class="heart">❤️</span></div>
