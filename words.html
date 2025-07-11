@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言板 </title>
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Serif+SC&display=swap" rel="stylesheet">
+  <style>
+   * {
+  box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+  font-family: 'Noto Serif SC', serif;
+  background: url('image/words.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #444; 
+
+    }
+
+    .overlay {
+        background-color: rgba(255, 247, 220, 0.6); 
+  min-height: auto;  
+  padding: 2rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+   height: calc(100vh - 4rem);
+      box-sizing: border-box;
+    }
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.back-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  background: rgba(255,255,255,0.85);
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #555;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 99;
+  transition: background-color 0.3s ease;
+}
+.back-btn:hover {
+  background: rgba(255,255,255,1);
+  color: #222;
+}
+.board-container {
+  width: 90%;
+  max-width: 720px;
+  background: rgba(255, 255, 224, 0.85); /* 浅黄色稍微透明 */
+  padding: 1.8rem 2rem;
+  border-radius: 25px 25px 12px 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 1rem;  /* 去掉大底部空白 */
+  min-height: 400px; /* 长型留点高度，也可以自己调整 */
+}
+
+
+.decorative-strip {
+  width: 100%;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px 3px 0 0;
+  margin-bottom: 1rem;
+}
+
+.cusdis {
+  margin-top: 0;
+  flex-grow: 1;
+}
+
+
+@media (max-width: 600px) {
+  .board-container {
+    width: 95%;
+    padding: 1.5rem 1.8rem;
+    border-radius: 16px 16px 12px 12px;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  .back-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Noto Serif SC', serif;
+  background: url('image/words.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #444;  /* 轻柔的灰色字体 */
+}
+.overlay {
+  background-color: rgba(255, 255, 255, 0.25);  /* 白色遮罩 */
+  min-height: 100vh;
+  padding: 2rem 1rem 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* 顶部对齐*/
+  align-items: center;  /* 居中 */
+}
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.back-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  background: rgba(255,255,255,0.85);
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #555;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 99;
+  transition: background-color 0.3s ease;
+}
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #222;
+}
+.board-container {
+  width: 90%;
+  max-width: 720px;
+  background: rgba(248, 252, 219, 0.75);
+  padding: 2rem 2.5rem;
+  border-radius: 20px 20px 12px 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+
+.cusdis {
+  margin-top: 0;
+  flex-grow: 1;
+
+}
+
+#cusdis_thread {
+      flex-grow: 1;
+      background: rgba(252, 252, 224, 0.6);
+      border-radius: 15px;
+      box-shadow: inset 0 0 8px rgba(113, 111, 111, 0.05);
+      overflow: hidden;
+      padding: 10px;
+      width: 100%;
+      /* 高度撑满父容器 */
+      height: 100%;
+      box-sizing: border-box;
+    }
+   #cusdis_thread iframe {
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 15px;
+    }
+
+/* 响应式优化 */
+@media (max-width: 600px) {
+  .board-container {
+    width: 95%;
+    padding: 1.5rem 1.8rem;
+    border-radius: 16px 16px 12px 12px;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  .back-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <a href="gift.html" class="back-btn">← 返回主页</a>
+  <div class="overlay">
+    <h1><img src="image/grass.png" alt="留言图标" style="
+        height: 28px;
+        vertical-align: middle;
+        margin-right: 8px;"> 留言板 <img src="image/grass.png" alt="留言图标" style="
+        height: 28px;
+        
+        vertical-align: middle;
+        margin-right: 8px;"><br>
+        想对我说些什么呢</h1>
+      <div class="board-container">
+    
+      <!-- Cusdis 留言系统 -->
+      <div id="cusdis_thread"
+      data-host="https://cusdis.com"
+      data-app-id="4a9bb331-90c0-4ba9-9ed2-ca8a6f2d64da"
+      data-page-id="{{ PAGE_ID }}"
+      data-page-url="{{ PAGE_URL }}"
+      data-page-title="{{ PAGE_TITLE }}"
+    ></div>
+    <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+</body>
+</html>
