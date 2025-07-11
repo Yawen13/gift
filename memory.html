@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>想对你说</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --backdrop-blur: blur(6px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Noto Serif SC', 'Roboto', serif, sans-serif;
+      overflow: hidden;
+    }
+
+    body {
+      background: url('image/1001.jpg') no-repeat center center/cover;
+      position: relative;
+      color: white;
+      transition: background-image 0.5s ease-in-out;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    .nav {
+      text-align: center;
+      padding-top: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav a {
+      margin: 0 15px;
+      border-radius: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .nav a:hover {
+      text-decoration: underline;
+    }
+
+    .arrow-left, .arrow-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 3;
+      border-radius: 10px;
+    }
+
+    .arrow-left { left: 10px; }
+    .arrow-right { right: 10px; }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .text-block {
+      margin-bottom: 20px;
+      line-height: 1.8;
+      font-size: 1.4rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .highlight {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .music-container {
+      position: fixed;
+      bottom: 3rem;
+      padding: 0 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99;
+    }
+
+    .music-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 50px;
+      backdrop-filter: var(--backdrop-blur);
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+      height: 60px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .music-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .music-btn.expanded {
+      min-width: 280px;
+      border-radius: 30px;
+      padding: 1rem 2rem;
+    }
+
+    .music-text {
+      margin-left: 0.8rem;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1rem;
+      opacity: 0;
+      max-width: 0;
+      transition: all 0.4s ease;
+    }
+
+    .music-text.show {
+      opacity: 1;
+      max-width: 200px;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .music-btn.playing {
+      animation: pulse 2s infinite;
+    }
+    .play-icon {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+       font-size: 1.2rem;
+       z-index: 2;
+      transition: opacity 0.4s;
+}
+.music-btn.expanded .play-icon {
+  opacity: 0; /*图标隐藏 */
+}
+
+    @media (max-width: 768px) {
+      .text-block { font-size: 1.2rem; }
+      .highlight { font-size: 1.5rem; }
+      .music-btn.expanded {
+        min-width: 250px;
+        padding: 0.8rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .text-block { font-size: 1.1rem; }
+      .highlight { font-size: 1.3rem; }
+      .music-btn.expanded {
+        min-width: 220px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="nav">
+    <a href="gift.html">主页</a>
+    <a href="inmyeyes.html">我眼中的秀玄</a>
+    <a href="memory.html">想对你说</a>
+  </div>
+
+  <div class="music-container">
+    <button class="music-btn" onclick="toggleMusic()" id="musicBtn">
+        <span class="play-icon" id="playIcon">▶</span>
+      <span class="music-text" id="musicText">歌词里都是我想对你说的</span>
+    </button>
+  </div>
+
+  <button class="arrow-left" onclick="prevSlide()">&lt;</button>
+  <button class="arrow-right" onclick="nextSlide()">&gt;</button>
+
+  <div class="content">
+    <div class="text-block" id="text-block">
+      如果我们不曾相遇，你又会在哪里<br>
+      如果我们从不曾相识，人间又如何运行
+    </div>
+    <div class="highlight" id="highlight">
+      那一天 那一刻 那个场景<br>
+      你出现在我生命
+    </div>
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="201.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const bg = [
+      'image/1001.jpg', 
+      'image/1002.jpg',
+       'image/1003.jpg',
+      'image/1004.jpg', 
+      'image/1005.jpg', 
+      'image/1006.jpg', 
+      'image/1007.jpg',
+    ];
+
+    const texts = [
+      {
+        main: '如果我们不曾相遇，<br>生活中缺少了多少光景<br>如果我们从不曾相识，<br>我的心也不会知道怎样为一个人悸动',
+        highlight: '那一天 那一刻 那个场景<br>你出现在我生命'
+      },
+      {
+        main: '你是我眼里的一束光<br>照亮了许多普通的日子',
+        highlight: '想对你说：你很特别'
+      },
+      {
+        main: '如果说每个人的出现都有意义,<br>那你一定是我生命中最特别的安排',
+        highlight: '崔秀玄，生日快乐 '
+      },
+      {
+        main: '谢谢你出现在我生命里<br>让我学会表达、成长与珍惜',
+        highlight: '那天，我们不经意的相遇，却成了我最深的记忆'
+      },
+      {
+        main: '每一次相遇都是命中注定<br>每一个瞬间都值得珍藏',
+        highlight: '愿我们一起走过更多的岁月'
+      },
+      {
+        main: '在这个特别的日子里<br>我想对你说：我爱你',
+        highlight: '崔秀玄，永远是我的宝贝'
+      },
+      {
+        main: '无论未来怎样变化<br>我都会在你身边支持你',
+        highlight: '因为你是我心中最美的风景'
+      }
+    ];
+
+    let current = 0;
+    const body = document.body;
+    const textBlock = document.getElementById('text-block');
+    const highlight = document.getElementById('highlight');
+
+    function updateSlide() {
+      body.style.backgroundImage = `url('${bg[current]}')`;
+      textBlock.innerHTML = texts[current].main;
+      highlight.innerHTML = texts[current].highlight;
+    }
+
+    function prevSlide() {
+      current = (current - 1 + bg.length) % bg.length;
+      updateSlide();
+    }
+
+    function nextSlide() {
+      current = (current + 1) % bg.length;
+      updateSlide();
+    }
+
+    const music = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('musicBtn');
+    const musicText = document.getElementById('musicText');
+    let isPlaying = false;
+    let isExpanded = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+      } else {
+        music.play();
+      }
+      isPlaying = !isPlaying;
+      isExpanded = !isExpanded;
+      musicBtn.classList.toggle('expanded', isExpanded);
+      musicText.classList.toggle('show', isExpanded);
+      musicBtn.classList.toggle('playing', isPlaying);
+    }
+
+    let startX = 0;
+    document.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+    });
+
+    document.addEventListener('touchend', e => {
+      const endX = e.changedTouches[0].clientX;
+      const diff = endX - startX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) prevSlide();
+        else nextSlide();
+      }
+    });
+
+    updateSlide();
+  </script>
+</body>
+</html>
