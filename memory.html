@@ -234,6 +234,23 @@
   </audio>
 
   <script>
+    const preloadImages = [
+    'image/1001.jpg',
+    'image/1002.jpg',
+    'image/1003.jpg',
+    'image/1004.jpg',
+    'image/1005.jpg',
+    'image/1006.jpg',
+    'image/1007.jpg'
+  ];
+  preloadImages.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+    
+    
+    
+    
     const bg = [
       'image/1001.jpg', 
       'image/1002.jpg',
