@@ -236,6 +236,48 @@
       font-weight: 600;
       font-size: 0.9rem;
     }
+    .poem-box {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    z-index: 9999;
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .poem-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    font-family: "ZCOOL KuaiLe", cursive;
+    position: relative;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: #555;
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -20px); }
+    to   { opacity: 1; transform: translate(-50%, 0); }
+  }
   </style>
 </head>
 <body>
@@ -266,7 +308,96 @@
 
     </div>
     <div class="highlight" id="highlight">
-
+     
+    </div>
+  </div>
+  <!-- 浪漫按钮 -->
+      <div 
+      style="position: fixed;
+      top: 95%;
+       left: 50%; 
+       transform: translateX(-50%); 
+       z-index: 1000;">
+        <button id="toggle-poem" class="btn btn-outline-light" 
+        style="border-radius: 30px; 
+        background: transparent;       /* 背景透明 */
+        border: none; 
+       
+       padding: 9px 15px;
+         color: #474646; 
+         font-size: 16px; 
+         font-size: 0.8rem;
+         font-family: 'Noto Serif SC', serif;
+        ">
+          我爱你
+        </button>
+      </div>
+    
+      <div id="poem-container" class="poem-box">
+        <div class="poem-content">
+          <button class="close-btn" id="close-poem">&times;</button>
+          <h3 class="text-center mb-3">写给你的一封诗</h3>
+          <p>
+        我爱你，<br>
+        我的爱比太阳还温暖，<br>
+        比火山里的熔岩更为滚烫，<br>
+        比老木门里生了锈的钥匙还固执，<br>
+        比月光更不知疲倦，<br>
+        爱你的次数，比天上的繁星还多！<br><br>
+  
+        反正，<br>
+        我爱你。<br><br>
+  
+        即使手机屏幕代替了每一次拥抱，<br>
+        我仍觉得你就在我眼前；<br>
+        即使我看不见你，抱不了你，<br>
+        听到你的声音、<br>
+        感受到你文字里的温度，<br>
+        我便已很幸福。<br><br>
+  
+        虽然我们隔着地图上无法缩短的距离，<br>
+        跨越着7200秒的时差;<br><br>
+  
+        虽然你不在我身边一起吃早餐，<br>
+        不会再突然喊着我打乒乓球，<br>
+        每天晚上，身旁也少了些欢声笑语；<br><br>
+  
+        虽然我真的很想你，<br>
+        虽然每次都只能偷偷把思念咽进心里，<br>
+        虽然只能用“我没事”来故作坚强——<br><br>
+  
+        但我知道，<br>
+        我们的心从未远离半步，<br>
+        我们的爱也从未冷淡。<br>
+        目光之间，尽管横跨山海，<br>
+        却还是能感觉到宝宝那份不变的温柔。<br><br>
+  
+        我们的爱没有被距离所消磨，<br>
+        而是逆流而上，越爱越真。<br><br>
+  
+        所以我愿意继续等——<br>
+        等到宝宝，<br>
+        不只是屏幕里的你，不只是聊天框里的你，<br><br>
+  
+        而是那个——<br>
+        就在我身边，<br>
+        可以牵手、可以拥抱，<br>
+        可以一起走回家路的你；<br><br>
+  
+        而是那个——<br>
+        站在我面前，<br>
+        带着笑容，<br>
+        在目光中能映出我心动模样的你。<br><br>
+  
+        而在那一天到来之前，<br>
+        我会好好生活，好好学习，好好想你，<br>
+        像现在这样，<br>
+        一边翻着你的消息，一边对自己说：<br><br>
+  
+        我爱你，<br>
+        比昨天更深，<br>
+        比明天更坚定。
+      </p>
     </div>
   </div>
 
@@ -441,12 +572,12 @@
           break;
         }
       }
-      // 高亮当前行，去掉其他行高亮
+      // 高亮
       lines.forEach((line, idx) => {
         line.classList.toggle('active', idx === currentIndex);
       });
 
-      // 自动滚动歌词容器，让当前行居中显示
+      
       const activeLine = lines[currentIndex];
       if (activeLine) {
         const containerHeight = lyricContainer.clientHeight;
@@ -461,10 +592,10 @@
     function toggleMusic() {
       if (isPlaying) {
         music.pause();
-         lyricContainer.style.display = 'none'; // 暂停时隐藏歌词
+         lyricContainer.style.display = 'none'; 
       } else {
         music.play();
-         lyricContainer.style.display = 'block'; // 播放时显示歌词
+         lyricContainer.style.display = 'block'; 
       }
       isPlaying = !isPlaying;
       isExpanded = !isExpanded;
@@ -488,6 +619,18 @@
     });
 
     updateSlide();
+    const toggleBtn = document.getElementById('toggle-poem');
+  const poemBox = document.getElementById('poem-container');
+  const closeBtn = document.getElementById('close-poem');
+
+  toggleBtn.addEventListener('click', () => {
+    poemBox.style.display = 'block';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    poemBox.style.display = 'none';
+  });
+  
   </script>
 </body>
 </html>
