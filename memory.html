@@ -88,7 +88,7 @@
       text-align: center;
       height: 100vh;
       padding: 20px;
-      transform: translateY(-5vh);
+      transform: translateY(-8vh);
     }
 
     .text-block {
@@ -320,7 +320,7 @@
        z-index: 1000;">
         <button id="toggle-poem" class="btn btn-outline-light" 
         style="border-radius: 30px; 
-        background: transparent;       /* 背景透明 */
+        background: transparent;     
         border: none; 
        
        padding: 9px 15px;
@@ -552,7 +552,7 @@
 
     const lyricContainer = document.getElementById('lyric-container');
 
-    // 初始化生成歌词行
+   
     lyrics.forEach(({ text }) => {
       const div = document.createElement('div');
       div.className = 'line';
@@ -572,7 +572,7 @@
           break;
         }
       }
-      // 高亮
+     
       lines.forEach((line, idx) => {
         line.classList.toggle('active', idx === currentIndex);
       });
