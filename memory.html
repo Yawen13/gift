@@ -203,6 +203,7 @@
     }
     /* 滚动歌词容器 */
     #lyric-container {
+      display: none; /* 默认隐藏 */
       position: fixed;
       bottom: 6.8rem; /* 比音乐按钮上方一点 */
       left: 50%;
@@ -460,8 +461,10 @@
     function toggleMusic() {
       if (isPlaying) {
         music.pause();
+         lyricContainer.style.display = 'none'; // 暂停时隐藏歌词
       } else {
         music.play();
+         lyricContainer.style.display = 'block'; // 播放时显示歌词
       }
       isPlaying = !isPlaying;
       isExpanded = !isExpanded;
